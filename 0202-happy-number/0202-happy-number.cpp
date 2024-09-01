@@ -3,7 +3,6 @@ public:
     bool isHappy(int n) {
         int value = n;
         int result;
-        int num;
         int data;
         std::unordered_map<int, int> hashmap;
         while(value != 1){
