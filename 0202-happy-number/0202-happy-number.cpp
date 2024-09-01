@@ -9,13 +9,13 @@ public:
         while(value != 1){
             if(hashmap.count(value) == 0){
                 s_value = std::to_string(value);
-                hashmap[value] = [](std::string& num, int& res, int& val, const int& zer) -> int{
+                hashmap[value] = [](std::string& num, int& res, const int& zer) -> int{
                     res = 0;
                     for(int i=0; i<num.size(); i++){
                         res += ((int)num[i] - zer) * ((int)num[i] - zer);
                     }
-                    return val;
-                }(s_value, result, value, zero);
+                    return res;
+                }(s_value, result, zero);
                 value = result;
             }
             else{
