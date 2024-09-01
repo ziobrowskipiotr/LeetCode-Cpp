@@ -1,20 +1,19 @@
 class Solution {
 public:
     bool isHappy(int n) {
-        int value = n;
         int result;
         int data;
         std::unordered_map<int, int> hashmap;
-        while(value != 1){
-            if(hashmap.count(value) == 0){
+        while(n != 1){
+            if(hashmap.count(n) == 0){
                 result = 0;
-                data = value;
+                data = n;
                 while(data != 0){
                     result += (data%10) * (data%10);
                     data /= 10;
                 }
-                hashmap[value] = result;
-                value = result;
+                hashmap[n] = result;
+                n = result;
             }
             else{
                 return false;
