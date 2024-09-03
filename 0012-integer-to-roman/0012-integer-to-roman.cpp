@@ -10,7 +10,6 @@ public:
         for(int i=0; i<13; i++){
             temp = *p1;
             *p1 = num / *p1;
-            cout<<*p1<<endl;
             for(int j=0; j<*p1; j++){
                 result += *p2;
             }
