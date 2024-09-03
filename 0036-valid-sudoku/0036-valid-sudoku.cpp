@@ -5,9 +5,6 @@ public:
         std::unordered_map<int, std::unordered_set<char>> rows;
         std::unordered_map<int, std::unordered_set<char>> columns;
         std::unordered_map<int, std::unordered_set<char>> squares;
-        rows.rehash(9);
-        columns.rehash(9);
-        squares.rehash(9);
         char num;
 
         for(int i=0; i<9; i++){
@@ -19,7 +16,7 @@ public:
                     squares[(i/3)*3 + j/3].count(num) == 0){
                         rows[i].emplace(num);
                         columns[j].emplace(num);
-                        squares[(i/3)*3 + j/3].emplace(num);
+                        squares[3*(i/3) + j/3].emplace(num);
                     }
                     else{
                         return false;
