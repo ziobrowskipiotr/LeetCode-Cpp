@@ -5,6 +5,9 @@ public:
         std::unordered_map<int, std::unordered_set<char>> rows;
         std::unordered_map<int, std::unordered_set<char>> columns;
         std::unordered_map<int, std::unordered_set<char>> squares;
+        rows.rehash(9);
+        columns.rehash(9);
+        squares.rehash(9);
         char num;
 
         for(int i=0; i<9; i++){
