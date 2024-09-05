@@ -18,8 +18,8 @@ public:
             }
         }
         for(int i=stos.size()-1; i>=0; i--){
-            word += stos.at(i)+" ";
+            s += stos.at(i)+" ";
         }
-        return word.substr(0, word.size()-1);
+        return s.substr(siz, s.size()-siz-1);
     }
 };
