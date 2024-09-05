@@ -2,7 +2,6 @@ class Solution {
 public:
     string reverseWords(string s) {
         std::vector<std::string> stos;
-        std::string word;
         int siz = s.size();
         int j = 0;
         for(int i=0; i<siz; i++){
