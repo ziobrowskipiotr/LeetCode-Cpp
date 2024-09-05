@@ -2,6 +2,7 @@ class Solution {
 public:
     string reverseWords(string s) {
         std::stack<std::string> stos;
+        std::string word;
         int j = 0;
         for(int i=0; i<s.size(); i++){
             if(s[i] == ' '){
@@ -15,11 +16,10 @@ public:
                 i = j;
             }
         }
-        s = "";
         while(!stos.empty()){
-            s += stos.top()+" ";
+            word += stos.top()+" ";
             stos.pop();
         }
-        return s.substr(0, s.size()-1);
+        return word.substr(0, word.size()-1);
     }
 };
