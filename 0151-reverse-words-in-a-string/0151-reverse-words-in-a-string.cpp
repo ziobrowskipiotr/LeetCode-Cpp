@@ -1,7 +1,7 @@
 class Solution {
 public:
     string reverseWords(string s) {
-        std::stack<std::string> stos;
+        std::vector<std::string> stos;
         std::string word;
         int siz = s.size();
         int j = 0;
@@ -13,13 +13,12 @@ public:
                 while(j<siz && s[j] != ' '){
                     j++;
                 }
-                stos.push(s.substr(i,j-i));
+                stos.push_back(s.substr(i,j-i));
                 i = j;
             }
         }
-        while(!stos.empty()){
-            word += stos.top()+" ";
-            stos.pop();
+        for(int i=stos.size()-1; i>=0; i--){
+            word += stos.at(i)+" ";
         }
         return word.substr(0, word.size()-1);
     }
