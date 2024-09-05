@@ -12,7 +12,6 @@ public:
             oss << word << " ";
         }
         slowo = oss.str();
-        slowo = slowo.substr(0, slowo.size()-1);
-        return slowo;
+        return slowo.substr(0, slowo.size()-1);
     }
 };
