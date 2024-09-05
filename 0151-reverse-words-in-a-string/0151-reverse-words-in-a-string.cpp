@@ -1,16 +1,25 @@
 class Solution {
 public:
     string reverseWords(string s) {
-        std::istringstream iss(s);
-        std::vector<std::string> wektor;
-        std::string slowo;
-        while(iss >> slowo){
-            wektor.emplace(wektor.begin(), slowo);
+        std::stack<std::string> stos;
+        std::string word;
+        int j = 0;
+        for(int i=0; i<s.size(); i++){
+            if(s[i] == ' '){
+            }
+            else{
+                j = i;
+                while(j<s.size() && s[j] != ' '){
+                    j++;
+                }
+                stos.push(s.substr(i,j-i));
+                i = j;
+            }
         }
-        slowo = "";
-        for(int i=0; i<wektor.size(); i++){
-            slowo += wektor[i]+" ";
+        while(!stos.empty()){
+            word += stos.top()+" ";
+            stos.pop();
         }
-        return slowo.substr(0, slowo.size()-1);
+        return word.substr(0, word.size()-1);
     }
 };
