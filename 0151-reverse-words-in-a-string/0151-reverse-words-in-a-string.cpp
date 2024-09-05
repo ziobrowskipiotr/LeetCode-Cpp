@@ -3,13 +3,14 @@ public:
     string reverseWords(string s) {
         std::stack<std::string> stos;
         std::string word;
+        int siz = s.size();
         int j = 0;
-        for(int i=0; i<s.size(); i++){
+        for(int i=0; i<siz; i++){
             if(s[i] == ' '){
             }
             else{
                 j = i;
-                while(j<s.size() && s[j] != ' '){
+                while(j<siz && s[j] != ' '){
                     j++;
                 }
                 stos.push(s.substr(i,j-i));
