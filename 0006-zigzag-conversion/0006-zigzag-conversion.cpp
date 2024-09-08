@@ -4,7 +4,6 @@ public:
         if(numRows == 1){
             return s;
         }
-
         std::vector<std::string> wektor(numRows, "");
         std::string result;
         wektor[0]+=s[0];
