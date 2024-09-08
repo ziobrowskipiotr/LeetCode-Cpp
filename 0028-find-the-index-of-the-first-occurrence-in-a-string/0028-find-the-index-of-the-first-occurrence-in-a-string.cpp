@@ -5,6 +5,7 @@ public:
         int ned_size = needle.size();
         int pointer1;
         int pointer2;
+
         for(int i=0; i<hay_size; i++){
             if(haystack[i] == needle[0]){
                 pointer1=0;
