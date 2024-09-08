@@ -6,6 +6,7 @@ public:
         }
         std::string* tablica = new std::string[numRows];
         std::string result;
+
         tablica[0]+=s[0];
         int j = 0;
         for(int i=1; i<s.size(); i++){
