@@ -15,21 +15,9 @@ public:
         if(root == nullptr){
             return 0;
         }
-        std::queue<pair<TreeNode*, int>> kolejka;
-        int k = 1;
-        kolejka.push(std::pair(root, k));
-        while(!kolejka.empty()){
-            if(kolejka.front().first->left != nullptr){
-                k = kolejka.front().second+1;
-                kolejka.push(std::pair(kolejka.front().first->left, k));
-            }
-            if(kolejka.front().first->right != nullptr){
-                k = kolejka.front().second+1;
-                kolejka.push(std::pair(kolejka.front().first->right, k));
-            }
-            kolejka.pop();
-            
-        }
-        return k;
+        int left = maxDepth(root->left);
+        int right = maxDepth(root->right);
+
+        return max(left, right)+1;
     }
 };
