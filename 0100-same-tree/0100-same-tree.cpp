@@ -14,6 +14,7 @@ public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
         bool left;
         bool right;
+
         if(p == nullptr && q == nullptr){
             return true;
         }
