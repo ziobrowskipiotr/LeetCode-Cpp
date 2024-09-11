@@ -16,20 +16,15 @@ public:
         auto i = find(inorder.begin(), inorder.end(), preorder.at(0));
         if(inorder.size()>1 && preorder.size()>1 && find(inorder.begin(), inorder.end(), preorder.at(1)) != inorder.end() && i-inorder.begin() > find(inorder.begin(), inorder.end(), preorder.at(1))-inorder.begin()){
             preorder.erase(preorder.begin());
-            cout<<"z lewej: "<<preorder.at(0)<<endl;
             root->left = new TreeNode(preorder.at(0));
             vector<int> lsub_inorder(inorder.begin(), i);
             build(root->left, preorder, lsub_inorder);
         }
         if(inorder.size()>1 && preorder.size()>1 && find(inorder.begin(), inorder.end(), preorder.at(1)) != inorder.end() && i-inorder.begin() < find(inorder.begin(), inorder.end(), preorder.at(1))-inorder.begin()){
-            cout<<"z prawej: "<<preorder.at(1)<<"bo: "<<i-inorder.begin()<<" a: "<<find(inorder.begin(), inorder.end(), preorder.at(1))-inorder.begin()<<endl;
             preorder.erase(preorder.begin());
             root->right = new TreeNode(preorder.at(0));
             vector<int> rsub_inorder(i+1, inorder.end());   
             build(root->right, preorder, rsub_inorder);
-        }
-        else{
-            cout<<"pominięto"<<endl;
         }
     }
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
