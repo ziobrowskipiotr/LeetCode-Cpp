@@ -15,15 +15,13 @@ public:
         if(pointer != end_pointer && (in_map[*(pointer+1)]>=start && in_map[*(pointer+1)]<=end)){
             if(in_map[*(pointer+1)] < in_map[*pointer]){
                 root->left = new TreeNode(*(pointer+1));
-                pointer++;
-                complete_tree(root->left, in_map, pointer, end_pointer, start, in_map[*(pointer-1)]-1);
+                complete_tree(root->left, in_map, ++pointer, end_pointer, start, in_map[*(pointer-1)]-1);
             }
         }
         if(pointer != end_pointer && (in_map[*(pointer+1)]>=start && in_map[*(pointer+1)]<=end)){
             if(in_map[*(pointer+1)] > in_map[*pointer]){
                 root->right = new TreeNode(*(pointer+1));
-                pointer++;
-                complete_tree(root->right, in_map, pointer, end_pointer, (in_map[*(pointer-1)]+1), end);
+                complete_tree(root->right, in_map, ++pointer, end_pointer, (in_map[*(pointer-1)]+1), end);
             }
         }
     }
