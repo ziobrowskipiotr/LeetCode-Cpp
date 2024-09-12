@@ -15,7 +15,7 @@ public:
         auto i = find(begin, end, preorder.front());
         if(end-begin>1 && preorder.size()>1){
             auto find1 = find(begin, end, preorder.at(1));
-            if(find1 != end && i-begin > find1-begin){
+            if(find1 != end && i > find1){
                 preorder.erase(preorder.begin());
                 root->left = new TreeNode(preorder.front());
                 build(root->left, preorder, begin, i);
@@ -23,7 +23,7 @@ public:
         }
         if(end-begin>1 && preorder.size()>1){
             auto find1 = find(begin, end, preorder.at(1));
-            if(find1 != end && i-begin < find1-begin){
+            if(find1 != end && i < find1){
                 preorder.erase(preorder.begin());
                 root->right = new TreeNode(preorder.front());
                 build(root->right, preorder, i+1, end);
