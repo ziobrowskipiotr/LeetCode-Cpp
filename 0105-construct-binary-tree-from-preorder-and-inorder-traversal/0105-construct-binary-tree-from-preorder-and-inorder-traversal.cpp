@@ -9,6 +9,7 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
 class Solution {
 public:
     void build(TreeNode* root, int*& pointer1, int*& pointer2, vector<int>::iterator begin, vector<int>::iterator end){
