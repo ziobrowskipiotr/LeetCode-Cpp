@@ -11,32 +11,33 @@
  */
 class Solution {
 public:
-    void build(TreeNode* root, int*& pointer1, int*& pointer2, vector<int>::iterator begin, vector<int>::iterator end){
-        bool f1 = end-begin>1;
-        bool h2 = pointer1 != pointer2;
-        auto i = find(begin, end, *pointer1);
-        if(end-begin>1 && pointer1 != pointer2){
-            auto find1 = find(begin, end, *(pointer1 + 1));
-            if(find1 != end && i > find1){
-                root->left = new TreeNode(*(++pointer1));
-                build(root->left, pointer1, pointer2, begin, i);
+    void complete_tree(TreeNode* root, unordered_map<int, int*> &in_map, int* &pointer, int* &end_pointer, int* start, int* end){
+        if(pointer != end_pointer && (in_map[*(pointer+1)]>=start && in_map[*(pointer+1)]<=end)){
+            if(in_map[*(pointer+1)] < in_map[*pointer]){
+                root->left = new TreeNode(*(pointer+1));
+                pointer++;
+                complete_tree(root->left, in_map, pointer, end_pointer, start, in_map[*(pointer-1)]-1);
             }
         }
-        bool f = end-begin>1;
-        bool h = pointer1 != pointer2;
-        if(end-begin>1 && pointer1 != pointer2){
-            auto find1 = find(begin, end, *(pointer1 + 1));
-            if(find1 != end && i < find1){
-                root->right = new TreeNode(*(++pointer1));
-                build(root->right, pointer1, pointer2, i+1, end);
+        if(pointer != end_pointer && (in_map[*(pointer+1)]>=start && in_map[*(pointer+1)]<=end)){
+            if(in_map[*(pointer+1)] > in_map[*pointer]){
+                root->right = new TreeNode(*(pointer+1));
+                pointer++;
+                complete_tree(root->right, in_map, pointer, end_pointer, (in_map[*(pointer-1)]+1), end);
             }
         }
     }
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-        int* pointer1 = &preorder.front();
-        int* pointer2 = &preorder.back();
-        TreeNode* root = new TreeNode(*pointer1);
-        build(root, pointer1, pointer2, inorder.begin(), inorder.end());
+        int* pointer = &preorder.front();
+        int* end_pointer = &preorder.back();
+        int* start = &inorder.front();
+        int* end = &inorder.back();
+        TreeNode* root = new TreeNode(*pointer);
+        unordered_map<int, int*> in_map;
+        for(int i=0; i<inorder.size(); i++){
+            in_map[inorder[i]] = &inorder[i];
+        }
+        complete_tree(root, in_map, pointer, end_pointer, start, end);
         return root;
     }
 };
