@@ -11,7 +11,6 @@
  */
 class Solution {
 public:
-
     void build(TreeNode* &root, unordered_map<int, int> &in_map, int* &pointer, int* &pointer_start, int start, int end){
         if(pointer>pointer_start && (in_map[*(pointer-1)] >= start && in_map[*(pointer-1)] <= end)){
             if(in_map[*(pointer-1)]>in_map[*pointer]){
