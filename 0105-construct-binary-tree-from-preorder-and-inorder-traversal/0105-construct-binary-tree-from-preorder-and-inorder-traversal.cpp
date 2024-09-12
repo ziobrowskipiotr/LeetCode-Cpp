@@ -11,7 +11,6 @@
  */
 class Solution {
 public:
-
     void complete_tree(TreeNode* &root, unordered_map<int, int*> &in_map, int* &pointer, int* &end_pointer, int* start, int* end){
         if(pointer != end_pointer && (in_map[*(pointer+1)]>=start && in_map[*(pointer+1)]<=end)){
             if(in_map[*(pointer+1)] < in_map[*pointer]){
