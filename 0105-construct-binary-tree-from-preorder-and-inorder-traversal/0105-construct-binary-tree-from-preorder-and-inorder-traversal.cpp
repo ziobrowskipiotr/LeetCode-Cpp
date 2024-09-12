@@ -12,30 +12,28 @@
 class Solution {
 public:
     TreeNode* root = new TreeNode();
-    void build(TreeNode* root, vector<int>& preorder, vector<int>& inorder) {
-        auto i = find(inorder.begin(), inorder.end(), preorder.front());
-        if(inorder.size()>1 && preorder.size()>1){
-            auto find1 = find(inorder.begin(), inorder.end(), preorder.at(1));
-            if(find1 != inorder.end() && i-inorder.begin() > find1-inorder.begin()){
+    void build(TreeNode* root, vector<int>& preorder, vector<int>::iterator begin, vector<int>::iterator end) {
+        auto i = find(begin, end, preorder.front());
+        if(end-begin>1 && preorder.size()>1){
+            auto find1 = find(begin, end, preorder.at(1));
+            if(find1 != end && i-begin > find1-begin){
                 preorder.erase(preorder.begin());
                 root->left = new TreeNode(preorder.front());
-                vector<int> lsub_inorder(inorder.begin(), i);
-                build(root->left, preorder, lsub_inorder);
+                build(root->left, preorder, begin, i);
             }
         }
-        if(inorder.size()>1 && preorder.size()>1){
-            auto find1 = find(inorder.begin(), inorder.end(), preorder.at(1));
-            if(find1 != inorder.end() && i-inorder.begin() < find1-inorder.begin()){
+        if(end-begin>1 && preorder.size()>1){
+            auto find1 = find(begin, end, preorder.at(1));
+            if(find1 != end && i-begin < find1-begin){
                 preorder.erase(preorder.begin());
                 root->right = new TreeNode(preorder.front());
-                vector<int> rsub_inorder(i+1, inorder.end());
-                build(root->right, preorder, rsub_inorder);
+                build(root->right, preorder, i+1, end);
             }
         }
     }
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
         root->val = preorder.front();
-        build(root, preorder, inorder);
+        build(root, preorder, inorder.begin(), inorder.end());
         return root;
     }
 };
