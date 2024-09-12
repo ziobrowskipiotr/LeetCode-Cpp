@@ -33,7 +33,7 @@ public:
         int start = 0;
         int end = inorder.size()-1;
         TreeNode* root = new TreeNode(*pointer);
-        unordered_map<int, int> in_map;
+        unordered_map<int, int> in_map(end+1);
         for(int i=0; i<=end; i++){
             in_map[inorder[i]] = i;
         }
