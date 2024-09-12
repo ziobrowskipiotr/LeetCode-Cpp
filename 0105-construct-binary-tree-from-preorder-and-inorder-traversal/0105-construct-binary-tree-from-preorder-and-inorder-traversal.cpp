@@ -11,7 +11,6 @@
  */
 class Solution {
 public:
-    TreeNode* root = new TreeNode();
     void build(TreeNode* root, vector<int>& preorder, vector<int>::iterator begin, vector<int>::iterator end) {
         auto i = find(begin, end, preorder.front());
         if(end-begin>1 && preorder.size()>1){
@@ -32,7 +31,7 @@ public:
         }
     }
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-        root->val = preorder.front();
+        TreeNode* root = new TreeNode(preorder.front());
         build(root, preorder, inorder.begin(), inorder.end());
         return root;
     }
