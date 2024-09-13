@@ -9,6 +9,7 @@
  */
 class Solution {
 public:
+
     void dfs(vector<TreeNode*> &wektor, TreeNode* &p, bool &bol){
         if(bol && wektor.back()->left == p){
             wektor.push_back(wektor.back()->left);
