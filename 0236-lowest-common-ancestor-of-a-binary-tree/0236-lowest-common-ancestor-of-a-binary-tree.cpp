@@ -18,13 +18,13 @@ public:
         if(root->left != nullptr){
             temp1 = lowestCommonAncestor(root->left, p, q);
         }
-        if(root->left == nullptr){
+        else{
             temp1 = nullptr;
         }
         if(root->right != nullptr){
             temp2 = lowestCommonAncestor(root->right, p, q);
         }
-        if(root->right == nullptr){
+        else{
             temp2 = nullptr;
         }
 
