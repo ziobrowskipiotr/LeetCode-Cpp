@@ -1,6 +1,5 @@
 class Solution {
 public:
-
     string addBinary(string a, string b) {
         if(a.length() > b.length()){
             b.insert(b.begin(), a.length()-b.length(),'0');
@@ -8,12 +7,11 @@ public:
         else{
             a.insert(a.begin(), b.length()-a.length(),'0');
         }
-        int* a_len = new int(a.length());
         bool temp = false;
-        char* point1 = &a[*a_len-1];
-        char* point2 = &b[*a_len-1];
-        std::string result(*a_len+1, '\0');
-        for(int i=*a_len; i>0; i--){
+        char* point1 = &a[a.length()-1];
+        char* point2 = &b[b.length()-1];
+        std::string result(a.length()+1, '\0');
+        for(int i=result.length()-1; i>0; i--){
             if((int)*point1-'0' ^ (int)*point2-'0'){
                 if(temp){
                     result[i] = '0';
@@ -40,7 +38,6 @@ public:
         else{
             result.erase(result.begin());
         }
-        delete a_len;
         return result;
     }
 };
