@@ -12,7 +12,6 @@ public:
         char* point1 = &a[a_len-1];
         char* point2 = &b[a_len-1];
         std::string result(a_len+1, '\0');
-
         for(int i=a_len; i>0; i--){
             if((int)*point1-'0' ^ (int)*point2-'0'){
                 if(temp){
