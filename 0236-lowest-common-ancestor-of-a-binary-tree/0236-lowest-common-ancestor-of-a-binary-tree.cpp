@@ -16,9 +16,16 @@ public:
         if(root->left){
             root->left = lowestCommonAncestor(root->left, p, q);
         }
+        else{
+            root->left = nullptr;
+        }
         if(root->right){
             root->right = lowestCommonAncestor(root->right, p, q);
         }
+        else{
+            root->right = nullptr;
+        }
+
         if(root->left && root->right){
             return root;
         }
