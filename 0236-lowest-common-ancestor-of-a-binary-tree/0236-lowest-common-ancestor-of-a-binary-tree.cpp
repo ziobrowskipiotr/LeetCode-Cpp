@@ -9,7 +9,6 @@
  */
 class Solution {
 public:
-
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         if(root == p || root == q){
             return root;
@@ -17,24 +16,19 @@ public:
         if(root->left){
             root->left = lowestCommonAncestor(root->left, p, q);
         }
-        else{
-            root->left = nullptr;
-        }
         if(root->right){
             root->right = lowestCommonAncestor(root->right, p, q);
         }
+        if(root->left){
+            if(root->right){
+                return root;
+            }
+            else{
+                return root->left;
+            }
+        }
         else{
-            root->right = nullptr;
-        }
-
-        if(root->left && root->right){
-            return root;
-        }
-        else if(!root->left){
             return root->right;
-        }
-        else{
-            return root->left;
         }
     }
 };
