@@ -5,6 +5,7 @@ public:
         uint32_t point = 1;
         bool bol1;
         bool bol2;
+
         for(int i=0; i<16; i++){
             bol1 = n & point;
             bol2 = n & mask;
