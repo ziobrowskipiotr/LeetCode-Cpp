@@ -1,5 +1,6 @@
 class Solution {
 public:
+
     string addBinary(string a, string b) {
         if(a.length() > b.length()){
             b.insert(b.begin(), a.length()-b.length(),'0');
