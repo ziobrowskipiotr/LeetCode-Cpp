@@ -10,7 +10,6 @@ public:
         else{
             a.insert(a.begin(), b.length()-a.length(),'0');
         }
-
         bool temp = false;
         int a_len = a.length();
         char* point1 = &a[a_len-1];
