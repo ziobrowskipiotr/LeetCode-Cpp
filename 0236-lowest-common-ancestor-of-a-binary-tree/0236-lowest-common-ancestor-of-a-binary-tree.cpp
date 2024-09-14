@@ -16,23 +16,23 @@ public:
         }
         TreeNode* temp1;
         TreeNode* temp2;
-        if(root->left != nullptr){
+        if(root->left){
             temp1 = lowestCommonAncestor(root->left, p, q);
         }
         else{
             temp1 = nullptr;
         }
-        if(root->right != nullptr){
+        if(root->right){
             temp2 = lowestCommonAncestor(root->right, p, q);
         }
         else{
             temp2 = nullptr;
         }
 
-        if(temp1 != nullptr && temp2 != nullptr){
+        if(temp1 && temp2){
             return root;
         }
-        else if(temp1 == nullptr){
+        else if(!temp1){
             return temp2;
         }
         else{
