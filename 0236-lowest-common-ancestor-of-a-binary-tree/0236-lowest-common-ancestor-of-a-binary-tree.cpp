@@ -13,30 +13,27 @@ public:
         if(root == p || root == q){
             return root;
         }
-        TreeNode* temp1;
-        TreeNode* temp2;
         if(root->left){
-            temp1 = lowestCommonAncestor(root->left, p, q);
+            root->left = lowestCommonAncestor(root->left, p, q);
         }
         else{
-            temp1 = nullptr;
+            root->left = nullptr;
         }
         if(root->right){
-            temp2 = lowestCommonAncestor(root->right, p, q);
+            root->right = lowestCommonAncestor(root->right, p, q);
         }
         else{
-            temp2 = nullptr;
-            return temp1;
+            root->right = nullptr;
         }
 
-        if(temp1 && temp2){
+        if(root->left && root->right){
             return root;
         }
-        else if(!temp1){
-            return temp2;
+        else if(!root->left){
+            return root->right;
         }
         else{
-            return temp1;
+            return root->left;
         }
     }
 };
