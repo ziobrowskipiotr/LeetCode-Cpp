@@ -26,6 +26,7 @@ public:
         }
         else{
             temp2 = nullptr;
+            return temp1;
         }
 
         if(temp1 && temp2){
