@@ -7,14 +7,14 @@ public:
         else{
             a.insert(a.begin(), b.length()-a.length(),'0');
         }
-        bool* temp = new bool(false);
+        bool temp = false;
         char* point1 = &a[a.length()-1];
         char* point2 = &b[b.length()-1];
         std::string result(a.length()+1, '\0');
 
         for(int i=result.length()-1; i>0; i--){
             if((int)*point1-'0' ^ (int)*point2-'0'){
-                if(*temp){
+                if(temp){
                     result[i] = '0';
                 }
                 else{
@@ -22,24 +22,23 @@ public:
                 }
             }
             else{
-                if(*temp){
+                if(temp){
                     result[i] = '1';
                 }
                 else{
                     result[i] = '0';
                 }
             }
-            *temp = ((int)*point1-'0' & (int)*point2-'0') ^ (((int)*point1-'0' ^ (int)*point2-'0') & *temp);
+            temp = ((int)*point1-'0' & (int)*point2-'0') ^ (((int)*point1-'0' ^ (int)*point2-'0') & temp);
             point1--;
             point2--;
         }
-        if(*temp){
+        if(temp){
             result[0] = '1';
         }
         else{
             result.erase(result.begin());
         }
-        delete temp;
         return result;
     }
 };
